@@ -6,7 +6,7 @@
             [clojure.walk :as w]
             [clojure.string :as s]))
 
-(defn auth [response]
+(defn get-profile [response]
   (let [fields ["id" "first_name" "last_name" "gender" "email" "is_verified" "verified"]
         c (chan 1)]
     (.. js/FB (api "/me" (clj->js {:fields (s/join "," fields)})
@@ -34,7 +34,4 @@
                      (let [auth-response (aget response "authResponse")]
                        (when auth-response
                          (on-connected response))))
-                   (clj->js {:scope "public_profile,email"})
-
-                   ))
-  )
+                   (clj->js {:scope "public_profile,email"}))))
