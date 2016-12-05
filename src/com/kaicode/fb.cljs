@@ -6,9 +6,8 @@
             [clojure.walk :as w]
             [clojure.string :as s]))
 
-(defn get-profile [response]
-  (let [fields ["id" "first_name" "last_name" "gender" "email" "is_verified" "verified"]
-        c (chan 1)]
+(defn get-profile [fields]
+  (let [c (chan 1)]
     (.. js/FB (api "/me" (clj->js {:fields (s/join "," fields)})
                    (fn [result]
                      (let [user-profile (-> result js->clj
