@@ -28,7 +28,7 @@
                                                                   (on-connected response)
                                                                   (on-not-connected response)))))))))
 
-(defn login [{:keys [on-connected on-not-connected]}]
+(defn login [on-connected]
   (.. js/FB (login (fn [response]
                      (let [auth-response (aget response "authResponse")]
                        (when auth-response
