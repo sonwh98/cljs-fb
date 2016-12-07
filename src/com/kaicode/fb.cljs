@@ -1,8 +1,6 @@
 (ns com.kaicode.fb
   (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [reagent.core :as r]
-            [cljs.core.async :refer [<! >! put! chan]]
-            [com.kaicode.tily :as tily]
+  (:require [cljs.core.async :refer [<! >! put! chan]]
             [clojure.walk :as w]
             [clojure.string :as s]))
 
